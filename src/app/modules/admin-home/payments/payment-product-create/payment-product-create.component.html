@@ -1,0 +1,8 @@
+<form [formGroup]="productForm">
+    <label for="product-input" class="form-label">Product Name</label>
+    <input type="text" id="product-input" class="form-control" aria-labelledby="passwordHelpBlock" formControlName="productInput">
+    <div id="passwordHelpBlock" class="form-text">
+      Please enter a product name to create one
+    </div>
+    <button type="button" class="btn btn-primary" (click)="submitProductForm()">Submit</button>
+</form>

@@ -1,0 +1,28 @@
+<ul class="list-group">
+  <a class="list-group-item list-group-item-action" aria-current="true" routerLink="/user-home/">
+    Home
+  </a>
+  <a class="list-group-item list-group-item-action" aria-current="true" routerLink="/user-home/user-settings">
+    User Settings
+  </a>
+  <a class="list-group-item list-group-item-action" aria-current="true" routerLink="/user-home/payment">
+    Payment Information
+  </a>
+  <!-- <a class="list-group-item list-group-item-action" aria-current="true" routerLink="/user-home/twofactor">
+        Two Factor Authentication
+      </a> -->
+      <a class="list-group-item list-group-item-action" aria-current="true" routerLink="/user-home/billing-information">
+        Billing Information
+      </a>
+  <a class="list-group-item list-group-item-action" aria-current="true" routerLink="/user-home/products">
+    Product Selection
+  </a>
+  <a class="list-group-item list-group-item-action" aria-current="true" routerLink="/user-home/apikey">
+    API Access
+  </a>
+  <a id="delete-account-tab" class="list-group-item list-group-item-action" aria-current="true" data-bs-toggle="modal"
+    data-bs-target="#confirm-modal">
+    <p class="delete-account-paragraph">Delete Account</p>
+  </a>
+</ul>
+<app-confirm></app-confirm>

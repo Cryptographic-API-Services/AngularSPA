@@ -1,0 +1,35 @@
+<ul class="list-group" *ngIf="mainNavigation">
+    <a class="list-group-item list-group-item-action" routerLink="/admin-home/payment-products">
+        Products
+    </a>
+    <a class="list-group-item list-group-item-action" routerLink="/admin-home/payment-prices">
+        Prices
+    </a>
+    <a class="list-group-item list-group-item-action" routerLink="/admin-home/payment-subscription">
+        Subscription
+    </a>
+</ul>
+
+<ul class="list-group" *ngIf="productsNavigation">
+    <a class="list-group-item list-group-item-action" routerLink="/admin-home">
+        Admin Home
+    </a>
+    <a class="list-group-item list-group-item-action" routerLink="/admin-home/payment-products">
+        Products
+    </a>
+    <a class="list-group-item list-group-item-action" routerLink="/admin-home/payment-products/create">
+        Create a Product
+    </a>
+</ul>
+
+<ul class="list-group" *ngIf="pricesNavigation">
+    <a class="list-group-item list-group-item-action" routerLink="/admin-home">
+        Admin Home
+    </a>
+    <a class="list-group-item list-group-item-action" routerLink="/admin-home/payment-prices">
+        Prices
+    </a>
+    <a class="list-group-item list-group-item-action" routerLink="/admin-home/payment-prices/create">
+        Create a Price
+    </a>
+</ul>

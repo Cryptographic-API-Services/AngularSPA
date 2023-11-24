@@ -1,0 +1,12 @@
+<form [formGroup]="priceForm">
+  <label for="product-dropdown">Products</label>
+  <select class="form-select" formControlName="product">
+    <option [value]="product.stripeId" *ngFor="let product of products">{{product.productName}}</option>
+  </select>
+    <label for="price-input" class="form-label">Price Amount</label>
+    <input type="text" id="product-input" class="form-control" aria-labelledby="passwordHelpBlock" formControlName="price">
+    <div id="passwordHelpBlock" class="form-text">
+      Please enter a price amount to create one
+    </div>
+    <button type="button" class="btn btn-primary" (click)="submitPriceForm()">Submit</button>
+</form>
