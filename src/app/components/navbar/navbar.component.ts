@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthGuardService } from 'src/app/services/auth-guard.service';
-import { NavbarEmitterService } from 'src/app/services/navbar-emitter.service';
+import { NavbarEmitterService, NavbarEmitterType } from 'src/app/services/navbar-emitter.service';
 
 @Component({
   selector: 'app-navbar',
@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit {
   }
 
   private subscribeTooEmitter(): void {
-    this.navbarEmitter.emitter.subscribe((response: any) => {
+    this.navbarEmitter.emitter.subscribe((response: NavbarEmitterType) => {
       if (response === "user-logged-in") {
         this.isUserLoggedIn = true;
       } else if (response === "user-logged-out") {

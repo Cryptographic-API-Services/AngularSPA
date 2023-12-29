@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ConfirmService } from 'src/app/services/confirm.service';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+
+export type ConfirmType = "yes" | "no";
 
 @Component({
   selector: 'app-confirm',
@@ -8,15 +9,16 @@ import { ConfirmService } from 'src/app/services/confirm.service';
 })
 export class ConfirmComponent implements OnInit {
 
-  constructor(
-    private confirmService: ConfirmService
-  ) { }
+  @Output()
+  confirmOutput: EventEmitter<ConfirmType> = new EventEmitter<ConfirmType>();
+
+  constructor() { }
 
   ngOnInit(): void {
   }
 
 
   handleConfirmYesClick() {
-    this.confirmService.confirmSubject$.next("yes");
+    this.confirmOutput.next("yes");
   }
 }
