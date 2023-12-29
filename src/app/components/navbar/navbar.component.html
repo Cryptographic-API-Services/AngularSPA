@@ -18,9 +18,20 @@
     </ul>
   </div>
   <div class="collapse navbar-collapse" id="navbarLoggedInContent" *ngIf="isUserLoggedIn">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="" (click)="logOut()">Logout</a>
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          <i id="bars-icon" class="fa fa-bars " aria-hidden="true"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" routerLink="/">Home</a></li>
+          <li><a class="dropdown-item" routerLink="/user-home/">User Dashboard</a></li>
+          <li *ngIf="adminAuthGuard.isAdmin()"><a class="dropdown-item" routerLink="/admin-home/">Admin Dashboard</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li class="dropdown-item">
+            <a class="nav-link" (click)="logOut()">Logout</a>
+          </li>
+        </ul>
       </li>
     </ul>
   </div>

@@ -20,4 +20,13 @@ export class AdminAuthGuardService  {
     }
     return result;
   }
+
+  public isAdmin(): boolean {
+    let result = true;
+    const token = this.authGuard.getDecodedToken()
+    if (!token || token.IsAdmin === "False") {
+      result = false;
+    }
+    return result;
+  }
 }

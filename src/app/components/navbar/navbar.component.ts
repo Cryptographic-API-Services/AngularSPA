@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AdminAuthGuardService } from 'src/app/services/admin-auth-guard.service';
 import { AuthGuardService } from 'src/app/services/auth-guard.service';
 import { NavbarEmitterService, NavbarEmitterType } from 'src/app/services/navbar-emitter.service';
 
@@ -12,7 +14,9 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private navbarEmitter: NavbarEmitterService,
-    private authGuard: AuthGuardService
+    private authGuard: AuthGuardService,
+    public adminAuthGuard: AdminAuthGuardService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -41,6 +45,6 @@ export class NavbarComponent implements OnInit {
   public logOut(): void {
     this.isUserLoggedIn = false;
     this.authGuard.removeToken();
+    this.router.navigateByUrl("/");
   }
-
 }
