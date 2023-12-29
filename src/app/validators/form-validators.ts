@@ -1,8 +1,8 @@
-var luhn = require("luhn");
+const luhn = require("luhn");
 import { AbstractControl } from '@angular/forms';
 
 export function passwordValidator(control: AbstractControl) {
-    var regex: RegExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
+    const regex: RegExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
     if (!regex.test(control.value)) {
         return { passwordValidator: { valid: false } };
     }
@@ -10,7 +10,7 @@ export function passwordValidator(control: AbstractControl) {
 }
 
 export function phoneNumberValidator(control: AbstractControl) {
-    var regex: RegExp = /^((\\+91-?)|0)?[0-9]{10}$/
+    const regex: RegExp = /^((\\+91-?)|0)?[0-9]{10}$/
     if (!regex.test(control.value)) {
         return { phoneNumberValidator: { valid: false } };
     }
@@ -25,7 +25,7 @@ export function creditCardNumberValidator(control: AbstractControl) {
 }
 
 export function usernameValidator(control: AbstractControl) {
-    var regex: RegExp = /^[a-zA-Z0-9]{3,16}$/
+    const regex: RegExp = /^[a-zA-Z0-9]{3,16}$/
     if (!regex.test(control.value)) {
         return { usernameValidator: { valid: false } };
     }
