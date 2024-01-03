@@ -23,16 +23,13 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.1",
     "chart.js": "^4.3.0",
-    "echarts": "^5.4.0",
     "font-awesome": "^4.7.0",
     "jwt-decode": "^3.1.2",
     "luhn": "^2.4.1",
     "ng2-charts": "^5.0.4",
-    "ngx-echarts": "^14.0.0",
     "ngx-editor": "^15.0.1",
     "ngx-toastr": "^15.2.1",
     "rxjs": "~7.5.0",
-    "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
   },
   "devDependencies": {
@@ -46,6 +43,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "tslib": "^2.6.2",
     "typescript": "^5.2.2"
   }
 }
