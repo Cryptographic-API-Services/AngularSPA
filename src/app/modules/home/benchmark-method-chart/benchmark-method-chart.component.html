@@ -1,4 +1,9 @@
-<div *ngIf="canDisplay">
-    <h3>Our Last 25 Executed Methods</h3>
-    <div echarts [options]="chartOption" class="demo-chart"></div>
+<div id="chart-wrapper" *ngIf="canDisplay">
+    <canvas id="chart" baseChart
+        [data]="barChartData"
+        [options]="barChartOptions"
+        [plugins]="barChartPlugins"
+        [legend]="barChartLegend"
+        [type]="'bar'">
+</canvas>
 </div>
