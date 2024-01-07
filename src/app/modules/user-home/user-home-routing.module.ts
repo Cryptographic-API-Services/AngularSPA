@@ -8,6 +8,7 @@ import { UserHomeComponent } from "./user-home/user-home.component";
 import { ProductsSelectionComponent } from "./products/products-selection.component";
 import { EditBillingInformationComponent } from "./edit-billing-information/edit-billing-information.component";
 import { UserSettingsComponent } from "./user-settings/user-settings.component";
+import { UserBenchmarksComponent } from "./user-benchmarks/user-benchmarks.component";
 
 const routes: Routes = [
   {
@@ -45,6 +46,11 @@ const routes: Routes = [
         component: UserSettingsComponent,
         canActivate: [AuthGuardService],
       },
+      {
+        path: "benchmarks",
+        component: UserBenchmarksComponent,
+        canActivate: [AuthGuardService]
+      }
     ],
   },
 ];
