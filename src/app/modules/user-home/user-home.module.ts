@@ -14,6 +14,7 @@ import { ProductsSelectionComponent } from './products/products-selection.compon
 import { EditBillingInformationComponent } from './edit-billing-information/edit-billing-information.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { UserBenchmarksComponent } from './user-benchmarks/user-benchmarks.component';
+import { NgChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { UserBenchmarksComponent } from './user-benchmarks/user-benchmarks.compo
     CommonModule,
     UserHomeRoutingModule,
     ReactiveFormsModule,
+    NgChartsModule,
     SharedModule
   ]
 })

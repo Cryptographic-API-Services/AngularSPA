@@ -1,7 +1,22 @@
 <h2>View Benchmarks by Days</h2>
-<select #benchmarkDateSelect class="form-select form-select-lg mb-3" aria-label="Large select example" (change)="handleDateChangeEvent()">
-    <option value="1">One</option>
-    <option value="7">Seven</option>
-    <option value="30">Thirty</option>
-    <option value="90">Ninty</option>
-  </select>
+<select #benchmarkDateSelect class="form-select form-select-lg mb-3" aria-label="Large select example"
+  (change)="handleDateChangeEvent()">
+  <option value="1">1</option>
+  <option value="7">7</option>
+  <option value="30">30</option>
+  <option value="90">90</option>
+</select>
+
+<h2>Benchmark Refresh Rate (seconds)</h2>
+<select #benchmarkRefreshRate class="form-select form-select-lg mb-3" aria-label="Large select example" (change)="handleRefreshChangeEvent()">
+  <option value="10">10</option>
+  <option value="30">30</option>
+  <option value="45">45</option>
+  <option value="60">60</option>
+</select>
+
+<div *ngFor="label of labels; let i = index">
+  <canvas id="chart-{{i}}" baseChart [data]="barChartData[i]" [options]="barChartOptions[i]" [plugins]="barChartPlugins"
+    [legend]="barChartLegend" [type]="'bar'">
+  </canvas>
+</div>
