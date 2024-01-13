@@ -34,13 +34,15 @@ export class UserBenchmarksComponent implements AfterViewInit {
   
   ngAfterViewInit(): void {
     this.getInitialChart(this.benchmarkDate.nativeElement.value);
-    this.refreshTimer = setInterval(() => {
-      this.getInitialChart(this.benchmarkDate.nativeElement.value);
-    }, parseInt(this.benchmarkRefreshRate.nativeElement.value) * 1000);
   }
 
   public handleDateChangeEvent(): void {
-    this.getInitialChart(this.benchmarkDate.nativeElement.value);
+    const newValue = this.benchmarkDate.nativeElement.value;
+    if (newValue !== "0") {
+      this.refreshTimer = setInterval(()=>{ 
+        this.getInitialChart(newValue);
+      });
+    }
   }
 
   public handleRefreshChangeEvent(): void {
@@ -56,7 +58,6 @@ export class UserBenchmarksComponent implements AfterViewInit {
     this.dataLabels = [];
     const url = environment.apiUrl + "BenchmarkSDKMethod/GetUserBenchmarksByDays" + `?daysAgo=${daysAgo}`
     this.httpService.getAuthenticated(url).subscribe((response: any) => {
-      console.log(response);
       this.barChartData = [];
       this.barChartOptions = [];
       for (let i = 0; i < response.benchmarks.length; i++) {
@@ -74,6 +75,7 @@ export class UserBenchmarksComponent implements AfterViewInit {
           this.dataLabels[labelIndex].push(response.benchmarks[i].methodName);
         }
       }
+      console.log(this.data);
 
       let possibleColors = ['red', 'blue', 'green', 'yellow', 'pink', 'purple', 'black']
       for (let i = 0; i < this.labels.length; i++) {
@@ -88,9 +90,6 @@ export class UserBenchmarksComponent implements AfterViewInit {
           ]
         });
       }
-      console.log(this.data);
-      console.log(this.labels);
-      console.log(this.dataLabels);
     });
   }
 }
