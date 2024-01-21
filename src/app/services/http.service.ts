@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthGuardService } from './auth-guard.service';
 import { catchError, throwError } from 'rxjs';
-import { NavbarEmitterService } from './navbar-emitter.service';
+import { NavbarStoreService } from '../shared/stores/navbar-store.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class HttpService {
   constructor(
     private http: HttpClient,
     private authGuard: AuthGuardService,
-    private navbarEmitterService: NavbarEmitterService
+    private navbarEmitterService: NavbarStoreService
     ) { }
 
   public get(url: string) {
@@ -76,7 +76,7 @@ export class HttpService {
   private handleError(error: any) {
     if (error.status === 401) {
       this.authGuard.unauthorizedLogout();
-      this.navbarEmitterService.emitter.emit("user-logged-out");
+      this.navbarEmitterService.navbarEvents("user-logged-out");
     }
     return throwError(error);
   }

@@ -4,8 +4,8 @@ import { ToastrService } from "ngx-toastr";
 import { Subscription } from "rxjs";
 import { AuthGuardService } from "src/app/services/auth-guard.service";
 import { HttpService } from "src/app/services/http.service";
-import { NavbarEmitterService } from "src/app/services/navbar-emitter.service";
 import { ConfirmType } from "src/app/shared/components/confirm/confirm.component";
+import { NavbarStoreService } from "src/app/shared/stores/navbar-store.service";
 import { environment } from "src/environments/environment";
 
 @Component({
@@ -21,7 +21,7 @@ export class UserHomeNavigationComponent implements OnInit, OnDestroy {
     private toast: ToastrService,
     private router: Router,
     private authGuardService: AuthGuardService,
-    private navbarEmitterService: NavbarEmitterService
+    private navbarEmitterService: NavbarStoreService
   ) {}
 
   ngOnDestroy(): void {
@@ -40,7 +40,7 @@ export class UserHomeNavigationComponent implements OnInit, OnDestroy {
         (response: any) => {
           this.toast.success("", "Deleted User Account");
           this.authGuardService.removeToken();
-          this.navbarEmitterService.emitter.emit("user-logged-out");
+          this.navbarEmitterService.navbarEvents("user-logged-out");
           this.router.navigate(["/"]);
         },
         (error) => {

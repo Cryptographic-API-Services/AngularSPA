@@ -6,8 +6,8 @@ import { ToastrService } from 'ngx-toastr';
 import LoginUserFormObject from 'src/app/models/LoginUserFormObject';
 import { AuthGuardService } from 'src/app/services/auth-guard.service';
 import { HttpService } from 'src/app/services/http.service';
-import { NavbarEmitterService } from 'src/app/services/navbar-emitter.service';
 import { UserAgentService } from 'src/app/services/user-agent.service';
+import { NavbarStoreService } from 'src/app/shared/stores/navbar-store.service';
 import { passwordValidator } from 'src/app/validators/form-validators';
 import { environment } from 'src/environments/environment';
 
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private http: HttpService,
     private router: Router,
-    private navbarEmitter: NavbarEmitterService,
+    private navbarEmitter: NavbarStoreService,
     private toastr: ToastrService,
     private authGuard: AuthGuardService,
     private userAgent: UserAgentService, 

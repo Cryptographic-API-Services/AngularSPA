@@ -7,7 +7,8 @@ import { Subject } from 'rxjs';
 export class RouterEventsService {
   public urlAfterRedirectsSubject: Subject<string> = new Subject<string>(); 
 
-  constructor() { 
+  constructor(
+  ) { 
     
   }
 }
