@@ -24,4 +24,11 @@ export class ApiKeyComponent implements OnInit {
 
     });
   }
+
+  public regenerateApiKey(): void {
+    this.httpService.putAuthenticated(environment.apiUrl + "ApiKey/RegenerateApiKey", {}).subscribe((response: any) => {
+      console.log(response);
+      this.apiKey = response.apiKey;
+    });
+  }
 }
