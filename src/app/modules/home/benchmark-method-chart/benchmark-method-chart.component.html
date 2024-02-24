@@ -1,9 +1,11 @@
-<div id="chart-wrapper" *ngIf="canDisplay">
+@if (canDisplay) {
+  <div id="chart-wrapper">
     <canvas id="chart" baseChart
-        [data]="barChartData"
-        [options]="barChartOptions"
-        [plugins]="barChartPlugins"
-        [legend]="barChartLegend"
-        [type]="'bar'">
-</canvas>
-</div>
+      [data]="barChartData"
+      [options]="barChartOptions"
+      [plugins]="barChartPlugins"
+      [legend]="barChartLegend"
+      [type]="'bar'">
+    </canvas>
+  </div>
+}

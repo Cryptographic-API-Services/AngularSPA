@@ -16,8 +16,10 @@
   <option value="60">60</option>
 </select>
 
-<div *ngFor="label of labels; let i = index">
-  <canvas id="chart-{{i}}" baseChart [data]="barChartData[i]" [options]="barChartOptions[i]" [plugins]="barChartPlugins"
-    [legend]="barChartLegend" [type]="'bar'">
-  </canvas>
-</div>
+@for (label of labels; track label; let i = $index) {
+  <div>
+    <canvas id="chart-{{i}}" baseChart [data]="barChartData[i]" [options]="barChartOptions[i]" [plugins]="barChartPlugins"
+      [legend]="barChartLegend" [type]="'bar'">
+    </canvas>
+  </div>
+}

@@ -1,35 +1,41 @@
-<ul class="list-group" *ngIf="mainNavigation">
+@if (mainNavigation) {
+  <ul class="list-group">
     <a class="list-group-item list-group-item-action" routerLink="/admin-home/payment-products">
-        Products
+      Products
     </a>
     <a class="list-group-item list-group-item-action" routerLink="/admin-home/payment-prices">
-        Prices
+      Prices
     </a>
     <a class="list-group-item list-group-item-action" routerLink="/admin-home/payment-subscription">
-        Subscription
+      Subscription
     </a>
-</ul>
+  </ul>
+}
 
-<ul class="list-group" *ngIf="productsNavigation">
+@if (productsNavigation) {
+  <ul class="list-group">
     <a class="list-group-item list-group-item-action" routerLink="/admin-home">
-        Admin Home
+      Admin Home
     </a>
     <a class="list-group-item list-group-item-action" routerLink="/admin-home/payment-products">
-        Products
+      Products
     </a>
     <a class="list-group-item list-group-item-action" routerLink="/admin-home/payment-products/create">
-        Create a Product
+      Create a Product
     </a>
-</ul>
+  </ul>
+}
 
-<ul class="list-group" *ngIf="pricesNavigation">
+@if (pricesNavigation) {
+  <ul class="list-group">
     <a class="list-group-item list-group-item-action" routerLink="/admin-home">
-        Admin Home
+      Admin Home
     </a>
     <a class="list-group-item list-group-item-action" routerLink="/admin-home/payment-prices">
-        Prices
+      Prices
     </a>
     <a class="list-group-item list-group-item-action" routerLink="/admin-home/payment-prices/create">
-        Create a Price
+      Create a Price
     </a>
-</ul>
+  </ul>
+}

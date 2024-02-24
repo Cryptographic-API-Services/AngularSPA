@@ -1,14 +1,18 @@
 <form [formGroup]="paymentInfoForm">
-    <label>Credit Card Number</label>
-    <input type="text" class="form-control" formControlName="creditCardNumber" placeholder="CC here...">
-    <label>Expiration Month</label>
-    <input type="text" class="form-control" formControlName="expirationMonth" placeholder="Expiration month here...">
-    <label>Expiration Year</label>
-    <input type="text" class="form-control" formControlName="expirationYear" placeholder="Expiration year here...">
-    <label>Security Code</label>
-    <input type="text" class="form-control" formControlName="securityCode" placeholder="Security Code here...">
-    <button type="button" class="btn btn-primary" (click)="handlePaymentInformationSubmit($event)" *ngIf="!wasFormSubmitted">Submit</button>
-    <div class="spinner-border text-primary" role="status" *ngIf="wasFormSubmitted">
-        <span class="visually-hidden">Loading...</span>
+  <label>Credit Card Number</label>
+  <input type="text" class="form-control" formControlName="creditCardNumber" placeholder="CC here...">
+  <label>Expiration Month</label>
+  <input type="text" class="form-control" formControlName="expirationMonth" placeholder="Expiration month here...">
+  <label>Expiration Year</label>
+  <input type="text" class="form-control" formControlName="expirationYear" placeholder="Expiration year here...">
+  <label>Security Code</label>
+  <input type="text" class="form-control" formControlName="securityCode" placeholder="Security Code here...">
+  @if (!wasFormSubmitted) {
+    <button type="button" class="btn btn-primary" (click)="handlePaymentInformationSubmit($event)">Submit</button>
+  }
+  @if (wasFormSubmitted) {
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
     </div>
+  }
 </form>

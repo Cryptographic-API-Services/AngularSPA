@@ -1,36 +1,42 @@
-<div class="card" *ngIf="successfulLogins.length > 0">
+@if (successfulLogins.length > 0) {
+  <div class="card">
     <div class="card-title text-center">
-        <h3>Successful Logins</h3>
+      <h3>Successful Logins</h3>
     </div>
     <div class="card-body">
-        <div *ngFor="let login of successfulLogins;">
-            <div class="card">
-                <div class="card-title text-center">
-                    <h5>{{login.city}}, {{login.country}}</h5>
-                    <p><b>Your IP Address:</b> {{login.ip}}</p>
-                    <p><b>User Agent:</b> {{login.userAgent}}</p>
-                    <p><b>Was This You?</b></p>
-                    <button class="btn btn-primary" (click)="handleWasThisMe(true, login.id)">Yes</button>
-                    <button class="btn btn-danger" (click)="handleWasThisMe(false, login.id)">No</button>
-                </div>
+      @for (login of successfulLogins; track login) {
+        <div>
+          <div class="card">
+            <div class="card-title text-center">
+              <h5>{{login.city}}, {{login.country}}</h5>
+              <p><b>Your IP Address:</b> {{login.ip}}</p>
+              <p><b>User Agent:</b> {{login.userAgent}}</p>
+              <p><b>Was This You?</b></p>
+              <button class="btn btn-primary" (click)="handleWasThisMe(true, login.id)">Yes</button>
+              <button class="btn btn-danger" (click)="handleWasThisMe(false, login.id)">No</button>
             </div>
+          </div>
         </div>
-        <nav>
-            <ul class="pagination">
-                <li class="page-item" (click)="previousPage()">
-                    <a class="page-link" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li class="page-item" *ngFor="let i of getPages()" (click)="getNewPage(i)">
-                    <a class="page-link">{{i}}</a>
-                </li>
-                <li class="page-item" (click)="nextPage()">
-                    <a class="page-link" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+      }
+      <nav>
+        <ul class="pagination">
+          <li class="page-item" (click)="previousPage()">
+            <a class="page-link" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          @for (i of getPages(); track i) {
+            <li class="page-item" (click)="getNewPage(i)">
+              <a class="page-link">{{i}}</a>
+            </li>
+          }
+          <li class="page-item" (click)="nextPage()">
+            <a class="page-link" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
-</div>
+  </div>
+}

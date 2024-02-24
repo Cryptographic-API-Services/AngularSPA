@@ -1,11 +1,17 @@
 <div class="row">
-    <div class="col"></div>
-    <div class="col">
-        <h3 *ngIf="!isDeleting && wasDeleteSuccessful">User Deletion was Successful</h3>
-        <h3 *ngIf="!isDeleting && !wasDeleteSuccessful">User Deletion Was Not Successful</h3>
-        <div class="spinner-border text-primary" role="status" *ngIf="isDeleting && !wasDeleteSuccessful">
-            <span class="visually-hidden">Authenticating...</span>
-        </div>
-    </div>
-    <div class="col"></div>
+  <div class="col"></div>
+  <div class="col">
+    @if (!isDeleting && wasDeleteSuccessful) {
+      <h3>User Deletion was Successful</h3>
+    }
+    @if (!isDeleting && !wasDeleteSuccessful) {
+      <h3>User Deletion Was Not Successful</h3>
+    }
+    @if (isDeleting && !wasDeleteSuccessful) {
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Authenticating...</span>
+      </div>
+    }
+  </div>
+  <div class="col"></div>
 </div>
