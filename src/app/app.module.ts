@@ -13,6 +13,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NgChartsModule } from 'ng2-charts';
+import { NgxsModule } from '@ngxs/store';
 
 @NgModule({
   declarations: [
@@ -32,11 +33,17 @@ import { NgChartsModule } from 'ng2-charts';
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
-    NgChartsModule
+    NgChartsModule,
+    NgxsModule.forRoot(
+      [],
+      {
+        developmentMode: !environment.production
+      }
+    )
   ],
   providers: [
     AppPreloadingStrategy,
-    {provide: LocationStrategy, useClass: HashLocationStrategy}
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })
