@@ -39,6 +39,10 @@ export class UserSettingsComponent implements OnInit {
     });
   }
 
+  public handle2FAChange(event: any) {
+    let isChecked: boolean = event.target.checked;
+  } 
+
   public newUsernameSubmit(): void {
     if (this.userNameForm.valid) {
       this.isNewUsernameSubmitted = true;
