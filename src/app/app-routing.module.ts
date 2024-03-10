@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: "admin-home", loadChildren: () => import(`./modules/admin-home/admin-home.module`).then(module => module.AdminHomeModule), data: { preload: true, delay: 5000 } },
   { path: "passwords", loadChildren: () => import(`./modules/passwords/passwords.module`).then(m => m.PasswordsModule), data: { preload: true, delay: 5000 } },
   { path: "inactive-user", loadChildren: () => import(`./modules/inactive-user/inactive-user.module`).then(m => m.InactiveUserModule), data: { preload: true, delay: 5000 } },
+  { path: "unlock-account", loadChildren: () => import(`./modules/unlock-account/unlock-account.module`).then(m => m.UnlockAccountModule), data: { preload: true, delay: 5000 } },
   { path: "**", redirectTo: "home", pathMatch: "full" }
 ];
 

@@ -10,8 +10,8 @@ import { environment } from 'src/environments/environment';
 })
 export class UnlockAccountComponent implements OnInit {
   private apiUrl:string = environment.apiUrl + "UserLogin/UnlockUser";
-  private isSubmitting: boolean = true;
-  private wasSuccessful: boolean = false;
+  public isSubmitting: boolean = true;
+  public wasSuccessful: boolean = false;
   constructor(private router: ActivatedRoute, private http: HttpService) { }
 
   ngOnInit(): void {
@@ -19,7 +19,7 @@ export class UnlockAccountComponent implements OnInit {
   }
 
   public activateAccount(): void {
-    const body = { id: this.router.snapshot.queryParamMap.get('id') };
+    const body = { id: this.router.snapshot.queryParamMap.get('id'), token: this.router.snapshot.queryParamMap.get('token') };
     this.http.put(this.apiUrl, body).subscribe(response => {
       this.isSubmitting = false;
       this.wasSuccessful = true;

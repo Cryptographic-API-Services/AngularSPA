@@ -1,7 +1,7 @@
 
 {
     "/": {
-      "target": "https://localhost:7189",
+      "target": "https://localhost:8081",
       "secure" : false,
       "logLevel": "debug",
       "changeOrigin": true

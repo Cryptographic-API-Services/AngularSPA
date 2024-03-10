@@ -1,9 +1,17 @@
 <div class="row">
     <div class="col"></div>
     <div class="col">
-        <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Unlocking User...</span>
-        </div>
+        @if (!isSubmitting && wasSuccessful) {
+            <h3>User Account Unlocked</h3>
+          }
+          @if (!isSubmitting && !wasSuccessful) {
+            <h3>User Account Was Not Unlocked</h3>
+          }
+          @if (isSubmitting && !wasSuccessful) {
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Authenticating...</span>
+            </div>
+          }
     </div>
     <div class="col"></div>
 </div>
