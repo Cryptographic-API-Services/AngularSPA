@@ -7,6 +7,7 @@
     "build": "ng build",
     "dev": "ng serve --proxy-config proxy.conf.json",
     "watch": "ng build --watch --configuration development",
+    "local:build:nginx": "ng build --output-path=/var/www/html",
     "test": "ng test"
   },
   "private": true,
