@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
         this.isSubmitClicked = false;
         this.loginForm.reset();
         localStorage.setItem("token", response.token);
+        this.isTwoFactorForm = response.TwoFactorAuth;
         this.navbarEmitter.navbarEvents("user-logged-in");
         // check if user has token stored
         if (response.twoFactorAuth === true) {

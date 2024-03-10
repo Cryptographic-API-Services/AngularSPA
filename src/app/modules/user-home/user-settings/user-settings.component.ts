@@ -16,6 +16,7 @@ export class UserSettingsComponent implements OnInit {
   public userPasswordForm: FormGroup;
   public isNewUsernameSubmitted: boolean = false;
   public isNewPasswordSubmitted: boolean = false;
+  public two2FAEnabled: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -37,10 +38,39 @@ export class UserSettingsComponent implements OnInit {
       confirmNewPassword: ['', [Validators.required, passwordValidator]],
       currentPassword: ['', [Validators.required, passwordValidator]]
     });
+
+    this.get2FAStatus();
+  }
+
+  private get2FAStatus(): void {
+    const url = environment.apiUrl + "TwoFA/Get2FAStatus";
+    this.httpService.getAuthenticated(url).subscribe((response: any) => {
+      this.two2FAEnabled = response.result;
+    });
+  }
+
+  private change2FAToDisabled(): void {
+    const url = environment.apiUrl + "TwoFA/TurnOff2FA";
+    this.httpService.putAuthenticated(url, null).subscribe((response: any) => {
+      this.two2FAEnabled = false;
+    });
+  } 
+
+  private chang2FAToEnabled(): void {
+    const url = environment.apiUrl + "TwoFA/TurnOn2FA";
+    this.httpService.putAuthenticated(url, null).subscribe((response: any) => {
+      this.two2FAEnabled = true;
+    });
   }
 
   public handle2FAChange(event: any) {
+    debugger;
     let isChecked: boolean = event.target.checked;
+    if (isChecked) {
+      this.chang2FAToEnabled();
+    } else {
+      this.change2FAToDisabled();
+    }
   } 
 
   public newUsernameSubmit(): void {
