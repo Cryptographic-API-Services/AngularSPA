@@ -22,6 +22,8 @@ export class LoginComponent implements OnInit {
   public isSubmitClicked: boolean = false;
   public isTwoFactorForm: boolean = false;
   public isTwoFactorFormSubmitted: boolean = false;
+  private userId: string;
+
   public loginForm: FormGroup = this.formBuilder.group({
     email: ['',
       [Validators.required, Validators.email]
@@ -29,6 +31,7 @@ export class LoginComponent implements OnInit {
     password: ['',
       [Validators.required, passwordValidator]]
   });
+
   public twoFAForm: FormGroup = this.formBuilder.group({
     code: ['', [Validators.required, Validators.minLength(8)]]
   });
@@ -57,7 +60,12 @@ export class LoginComponent implements OnInit {
         this.toastr.success("", response.message);
         this.isSubmitClicked = false;
         this.loginForm.reset();
-        localStorage.setItem("token", response.token);
+        if (response.token) {
+          localStorage.setItem("token", response.token);
+        }
+        if (response.userId) {
+          this.userId = response.userId;
+        }
         this.isTwoFactorForm = response.TwoFactorAuth;
         this.navbarEmitter.navbarEvents("user-logged-in");
         // check if user has token stored
@@ -101,10 +109,12 @@ export class LoginComponent implements OnInit {
   public twoFactorCodeSubmit(event: any): void {
     if (!this.isTwoFactorFormSubmitted && this.twoFAForm.valid) {
       this.isTwoFactorFormSubmitted = true;
-      let decodedToken = this.authGuard.getDecodedToken();
-      let body = this.getPutTwoFAVerificationBody(decodedToken);
-      this.http.putAuthenticated(environment.apiUrl + "UserLogin/ValidateHotpCode", body).subscribe((response: any) => {
+      let body = this.getPutTwoFAVerificationBody();
+      this.http.putAuthenticated("UserLogin/ValidateHotpCode", body).subscribe((response: any) => {
         this.isTwoFactorFormSubmitted = false;
+        if (response.token) {
+          localStorage.setItem("token", response.token);
+        }
         this.toastr.success(response.message, "");
         setTimeout(() => {
           this.router.navigate(['/user-home']);
@@ -116,9 +126,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  private getPutTwoFAVerificationBody(decodedToken: any): object {
+  private getPutTwoFAVerificationBody(): object {
     return {
-      "UserId": decodedToken["id"],
+      "UserId": this.userId,
       "HotpCode": this.twoFAForm.value["code"]
     }
   }
