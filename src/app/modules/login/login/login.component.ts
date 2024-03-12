@@ -118,7 +118,8 @@ export class LoginComponent implements OnInit {
   private getPutTwoFAVerificationBody(decodedToken: any): object {
     return {
       "UserId": decodedToken["id"],
-      "HotpCode": this.twoFAForm.value["code"]
+      "HotpCode": this.twoFAForm.value["code"],
+      "UserAgent": this.userAgent.getUserAgent()
     }
   }
 }
