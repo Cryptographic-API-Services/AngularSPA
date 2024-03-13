@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ApiKeyComponent implements OnInit {
   public apiKey: string = "";
+  public developmentKey: string = "";
 
   constructor(private httpService: HttpService) { }
 
@@ -20,6 +21,7 @@ export class ApiKeyComponent implements OnInit {
   private getApiKey(): void {
     this.httpService.getAuthenticated(environment.apiUrl + "UserLogin/GetApiKey").subscribe((response: any) => {
       this.apiKey = response.apiKey;
+      this.developmentKey = response.developmentKey;
     }, (error) => {
 
     });
