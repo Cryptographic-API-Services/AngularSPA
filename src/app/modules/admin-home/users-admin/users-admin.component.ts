@@ -16,4 +16,7 @@ export class UsersAdminComponent implements OnInit {
     this.getUsersPage();
   }
 
+  private getUsersPage(): void {
+
+  }
 }
