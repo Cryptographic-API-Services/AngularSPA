@@ -1,0 +1,36 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td scope="col">Email</td>
+            <td scope="col">Username</td>
+            <td scope="col">Is Active</td>
+            <td scope="col">Is Admin</td>
+            <td scope="col">Delete Account</td>
+        </tr>
+    </thead>
+    <tbody>
+        @for (user of userList; track user) {
+            <tr scope="row">
+                <td>{{user.email}}</td>
+                <td>{{user.username}}</td>
+                <td>
+                    @if (user.isActive) {
+                        <button class="btn btn-primary" (click)="makeUserInactive(user)">Active</button>
+                    } @else {
+                        <button class="btn btn-danger" (click)="makeUserActive(user)">Inactive</button>
+                    }
+                </td>
+                <td>
+                    @if (user.isAdmin) {
+                        <button class="btn btn-primary" (click)="makeUserRegularUser(user)">Admin</button>
+                    } @else {
+                        <button class="btn btn-danger" (click)="makeUserAdmin(user)">Regular User</button>
+                    }
+                </td>
+                <td>
+                    <button class="btn btn-danger" (click)="deleteUser(user)">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

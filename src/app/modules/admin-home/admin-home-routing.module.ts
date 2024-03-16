@@ -7,6 +7,7 @@ import { PaymentSubscriptionComponent } from './payments/payment-subscription/pa
 import { PaymentPricesComponent } from './payments/payment-prices/payment-prices.component';
 import { PaymentProductCreateComponent } from './payments/payment-product-create/payment-product-create.component';
 import { PaymentPriceCreateComponent } from './payments/payment-price-create/payment-price-create.component';
+import { UsersAdminComponent } from './users-admin/users-admin.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,8 @@ const routes: Routes = [
         { path: "payment-products/create", component: PaymentProductCreateComponent, canActivate: [AdminAuthGuardService] },
         { path: "payment-prices", component: PaymentPricesComponent, canActivate: [AdminAuthGuardService] },
         { path: "payment-prices/create", component: PaymentPriceCreateComponent, canActivate: [AdminAuthGuardService] },
-        { path: "payment-subscription", component: PaymentSubscriptionComponent, canActivate: [AdminAuthGuardService] }
+        { path: "payment-subscription", component: PaymentSubscriptionComponent, canActivate: [AdminAuthGuardService] },
+        { path: "users-admin", component: UsersAdminComponent, canActivate: [AdminAuthGuardService] }
       ]
   }
 ];
