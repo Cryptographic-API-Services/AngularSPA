@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { HttpService } from 'src/app/services/http.service';
 import { environment } from 'src/environments/environment';
 import { BenchmarkSDKMethod } from './types/benchmark-sdk-method';
@@ -9,7 +9,7 @@ import { ChartConfiguration } from 'chart.js';
   templateUrl: './user-benchmarks.component.html',
   styleUrl: './user-benchmarks.component.css'
 })
-export class UserBenchmarksComponent implements AfterViewInit {
+export class UserBenchmarksComponent implements AfterViewInit, OnDestroy {
 
   @ViewChild('benchmarkDateSelect')
   benchmarkDate: ElementRef;
@@ -30,6 +30,10 @@ export class UserBenchmarksComponent implements AfterViewInit {
 
   constructor(private httpService: HttpService) {
 
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.refreshTimer);
   }
   
   ngAfterViewInit(): void {
@@ -75,7 +79,6 @@ export class UserBenchmarksComponent implements AfterViewInit {
           this.dataLabels[labelIndex].push(response.benchmarks[i].methodName);
         }
       }
-      console.log(this.data);
 
       let possibleColors = ['red', 'blue', 'green', 'yellow', 'pink', 'purple', 'black']
       for (let i = 0; i < this.labels.length; i++) {
