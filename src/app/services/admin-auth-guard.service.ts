@@ -14,7 +14,8 @@ export class AdminAuthGuardService  {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     let result = true;
-    const token = this.authGuard.getDecodedToken()
+    const token = this.authGuard.getDecodedToken();
+    console.log(token);
     if (!token || token.IsAdmin === "False") {
       result = false;
     }
@@ -23,7 +24,7 @@ export class AdminAuthGuardService  {
 
   public isAdmin(): boolean {
     let result = true;
-    const token = this.authGuard.getDecodedToken()
+    const token = this.authGuard.getDecodedToken();
     if (!token || token.IsAdmin === "False") {
       result = false;
     }
