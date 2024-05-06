@@ -1,5 +1,6 @@
 # AngularSPA
 
+[![image](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/7bXXCQj45q)
 ![GitHub issues](https://img.shields.io/github/issues/Encryption-Api-Services/AngularSPA)
 ![GitHub](https://img.shields.io/github/license/Encryption-Api-Services/AngularSPA)
 
