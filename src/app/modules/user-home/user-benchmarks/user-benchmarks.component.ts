@@ -37,19 +37,30 @@ export class UserBenchmarksComponent implements AfterViewInit {
   }
 
   public handleDateChangeEvent(): void {
+    clearInterval(this.refreshTimer);
     const newValue = this.benchmarkDate.nativeElement.value;
     if (newValue !== "0") {
-      this.refreshTimer = setInterval(()=>{ 
+      const intervalTimer = parseInt(this.benchmarkRefreshRate.nativeElement.value) * 1000;
+      if (intervalTimer > 0) {
+        this.refreshTimer = setInterval(()=>{ 
+          this.getInitialChart(newValue);
+        }, intervalTimer);
+      } else {
         this.getInitialChart(newValue);
-      });
+      }
     }
   }
 
   public handleRefreshChangeEvent(): void {
     clearInterval(this.refreshTimer);
-    this.refreshTimer = setInterval(() => {
+    const intervalTimer = parseInt(this.benchmarkRefreshRate.nativeElement.value) * 1000;
+    if (intervalTimer > 0) {
+      this.refreshTimer = setInterval(() => {
+        this.getInitialChart(this.benchmarkDate.nativeElement.value);
+      }, intervalTimer);
+    } else {{
       this.getInitialChart(this.benchmarkDate.nativeElement.value);
-    }, parseInt(this.benchmarkRefreshRate.nativeElement.value) * 1000);
+    }}
   }
 
   private getInitialChart(daysAgo: number): void {
