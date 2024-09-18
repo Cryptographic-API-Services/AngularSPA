@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col">
+  <div class="col-4">
     <form [formGroup]="userNameForm" (submit)="newUsernameSubmit()">
       <div class="mb-3">
         <label for="newusername-input" class="form-label">New Username</label>
@@ -21,7 +21,11 @@
         </div>
       }
     </form>
-    <br />
+  </div>
+</div>
+<br />
+<div class="row">
+  <div class="col-4">
     <form [formGroup]="userPasswordForm" (submit)="submitNewPasswordForm()">
       <div class="mb-3">
         <label for="newPassword-input" class="form-label">New Password</label>
@@ -65,6 +69,11 @@
         </div>
       }
     </form>
+  </div>
+</div>
+<br />
+<div class="row">
+  <div class="col-4">
     <div class="form-check">
       <input class="form-check-input" type="checkbox" [checked]="two2FAEnabled" (change)="handle2FAChange($event)">
       <label class="form-check-label" for="flexCheckDefault">
