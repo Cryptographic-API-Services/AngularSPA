@@ -11,19 +11,19 @@
     </label>
 </div>
 
-@if (apiKeyService.apiKey() && apiKeyService.isProductionKey$()) {
+@if (apiKeyService.state.apiKey$() && apiKeyService.state.isProductionKey$()) {
     <div class="row">
         <div class="col-12">
             <p>Your Production API key is listed below</p>
-            <p>{{apiKeyService.apiKey$()}}</p>
+            <p>{{apiKeyService.state.apiKey$()}}</p>
             <br />
         </div>
     </div>
-} @else if (apiKeyService.developmentKey$() && apiKeyService.isDevelopmentKEY$()) {
+} @else if (apiKeyService.state.developmentKey$() && apiKeyService.state.isDevelopmentKEY$()) {
     <div class="row">
         <div class="col-12">
             <p>Your Development API key is listed below</p>
-            <p>{{apiKeyService.developmentKey$()}}</p>
+            <p>{{apiKeyService.state.developmentKey$()}}</p>
             <br />
         </div>
     </div>

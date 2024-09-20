@@ -9,8 +9,7 @@ export class ApiKeyService {
     apiKey$: signal<string>(""),
     developmentKey$: signal<string>(""),
     isProductionKey$: signal<boolean>(true),
-    isDevelopmentKEY$: signal<boolean>(false),
-    testing: signal<string[]>([]),
+    isDevelopmentKEY$: signal<boolean>(false)
   };
 
   constructor(private httpService: HttpService) {
