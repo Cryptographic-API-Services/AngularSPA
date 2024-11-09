@@ -29,8 +29,8 @@ export class EmergencyKitComponent implements OnInit {
 
   public ngOnInit(): void {
     this.emgerencyKitForm = this.formBuilder.group({
-      email: ['mikemulchrone987@gmail.com'],
-      emergencyKitSecret: ['ri9Y7eM7/gFjJ+favfzfuHALNcFjllvn0/qNvZ52VXM=']
+      email: [''],
+      emergencyKitSecret: ['']
     });
   }
 
