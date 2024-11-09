@@ -1,27 +1,38 @@
+@if(!hasKitBeenRecovered) {
 <div class="row">
     <div class="col"></div>
     <div class="col">
-      <h2>Emgerency Kit Recovery</h2>
+        <h2>Emgerency Kit Recovery</h2>
     </div>
     <div class="col"></div>
-  </div>
-  
-  <div class="row">
+</div>
+<div class="row">
     <div class="col">
     </div>
     <div class="col">
-      <form [formGroup]="emgerencyKitForm">
-        <label for="secret" class="form-label">Secret Key</label>
-        <input type="text" id="secret" class="form-control" formControlName="emergencyKitSecret">
-        @if (!hasFormBeenSubmitted) {
-          <button type="submit" class="btn btn-primary" (click)="handleSubmit($event)">Submit</button>
-        }
-        @if (hasFormBeenSubmitted) {
-          <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Reseting...</span>
-          </div>
-        }
-      </form>
+        <form [formGroup]="emgerencyKitForm">
+            <label for="email" class="form-label">Email</label>
+            <input type="text" id="email" class="form-control" formControlName="email">
+            <label for="secret" class="form-label">Secret Key</label>
+            <input type="text" id="secret" class="form-control" formControlName="emergencyKitSecret">
+            @if (!hasFormBeenSubmitted) {
+            <button type="submit" class="btn btn-primary" (click)="handleSubmit($event)">Submit</button>
+            }
+            @if (hasFormBeenSubmitted) {
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Reseting...</span>
+            </div>
+            }
+        </form>
     </div>
     <div class="col"></div>
-  </div>
+</div>
+} @else {
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <h2>Account has been recovered. Check your email.</h2>
+        </div>
+        <div class="col"></div>
+    </div>
+}
