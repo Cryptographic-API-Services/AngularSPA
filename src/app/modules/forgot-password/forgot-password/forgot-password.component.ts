@@ -26,7 +26,7 @@ export class ForgotPasswordComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.title.setTitle("Forgot Password | Encryption API Services");
+    this.title.setTitle("Forgot Password | Cryptographic API Services");
   }
 
   public handleKeyPress(event: any): void {

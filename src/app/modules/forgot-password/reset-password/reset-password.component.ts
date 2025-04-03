@@ -30,7 +30,7 @@ export class ResetPasswordComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.title.setTitle("Reset Password | Encryption API Services");
+    this.title.setTitle("Reset Password | Cryptographic API Services");
   }
 
   public handleKeyDownOnForm(event: any): void {

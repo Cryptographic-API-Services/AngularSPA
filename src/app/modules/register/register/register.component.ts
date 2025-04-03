@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.title.setTitle("Register | Encryption API Services");
+    this.title.setTitle("Register | Cryptographic API Services");
   }
 
   handleStateSelection(event: any) {

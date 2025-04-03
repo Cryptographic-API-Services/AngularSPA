@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.title.setTitle("Login | Encryption API Services");
+    this.title.setTitle("Login | Cryptographic API Services");
   }
 
   public handleFormSubmit($event: any) {

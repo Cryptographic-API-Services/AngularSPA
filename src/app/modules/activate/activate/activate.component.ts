@@ -21,7 +21,7 @@ export class ActivateComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.title.setTitle("Activate User | Encryption API Services");
+    this.title.setTitle("Activate User | Cryptographic API Services");
     this.isAuthenticating = true;
     const body = {
       "id": this.router.snapshot.queryParamMap.get('id'),
