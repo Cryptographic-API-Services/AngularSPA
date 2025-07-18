@@ -76,4 +76,11 @@ export class UsersAdminComponent implements OnInit {
       this.userList.splice(this.userList.findIndex(x => x.userId === user.userId), 1);
     });
   }
+
+  public revokeSession(user: UserTableItem): void {
+    let body = { UserId: user.userId};
+    this.httpService.postAuthenticated(environment.apiUrl + "/UserAdmin/RevokeSession", body).subscribe(() => {
+      // Handle successful session revocation
+    });
+  }
 }
